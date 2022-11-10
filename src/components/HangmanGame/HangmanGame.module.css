@@ -29,33 +29,3 @@
 
   border-bottom: 2px solid currentColor;
 }
-
-.keyboard-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 4px;
-}
-
-.keyboard-container > button {
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-
-  font-size: 1rem;
-  text-align: center;
-  text-transform: uppercase;
-
-  appearance: none;
-  border: 1px solid transparent;
-  border-radius: 8px;
-
-  color: #262626;
-  background-color: white;
-}
-
-.keyboard-container > button:disabled {
-  color: rgba(19, 1, 1, 0.3);
-  background-color: rgba(239, 239, 239, 0.3);
-  pointer-events: none;
-}

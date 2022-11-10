@@ -6,15 +6,12 @@ import {
   Show,
 } from "solid-js";
 import GameDoll from "./GameDoll";
+import VirtualKeyboard from "./VirtualKeyboard";
 
 import styles from "./HangmanGame.module.css";
 console.debug("styles", styles);
 
 const HangmanGame: Component = () => {
-  // https://javascript.plainenglish.io/create-an-array-of-alphabet-characters-in-javascript-with-this-simple-trick-930033079dd3
-  // const alpha = Array.from(Array(26)).map((e, i) => i + 65);
-  // const alphabet = alpha.map((x) => String.fromCharCode(x));
-  const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
   const maxAttempts = 6;
 
   const [secretWordTip, setSecretWordTip] = createSignal<string>("");
@@ -112,19 +109,11 @@ const HangmanGame: Component = () => {
           <div>Resposta: {secretWord()}</div>
         </Show>
 
-        <div class={styles["keyboard-container"]}>
-          <For each={alphabet}>
-            {(ch) => (
-              <button
-                type="button"
-                disabled={playerWin() || gameOver() || chosenLetters().has(ch)}
-                onClick={[handleClickVirtualKey, ch]}
-              >
-                {ch}
-              </button>
-            )}
-          </For>
-        </div>
+        <VirtualKeyboard
+          disabled={playerWin() || gameOver()}
+          disabledKeys={chosenLetters()}
+          onKey={handleClickVirtualKey}
+        />
       </Show>
     </div>
   );

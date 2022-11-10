@@ -1,0 +1,4 @@
+svg.game-doll line,
+svg.game-doll circle {
+  stroke: currentColor;
+}

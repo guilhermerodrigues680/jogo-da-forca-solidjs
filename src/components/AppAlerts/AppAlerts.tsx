@@ -48,8 +48,10 @@ const AppAlerts: Component = () => {
           onClick={handleAppAlertWrapperClick}
         >
           <div class={styles["app-alert-container"]} ref={appAlertContainerEl}>
-            <h6>{message()}</h6>
-            <button onClick={closeAlert}>close</button>
+            <h2>{message()}</h2>
+            <div class={styles["app-alert-actions"]}>
+              <button onClick={closeAlert}>Fechar</button>
+            </div>
           </div>
         </div>
       </Portal>

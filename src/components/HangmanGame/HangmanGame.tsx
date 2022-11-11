@@ -9,9 +9,11 @@ import GameDoll from "./GameDoll";
 import VirtualKeyboard from "./VirtualKeyboard";
 
 import styles from "./HangmanGame.module.css";
+import alertsStore from "../AppAlerts/alerts-store";
 console.debug("styles", styles);
 
 const HangmanGame: Component = () => {
+  const { showAlert } = alertsStore;
   const maxAttempts = 6;
 
   const [secretWordTip, setSecretWordTip] = createSignal<string>("");
@@ -44,11 +46,11 @@ const HangmanGame: Component = () => {
   createEffect(() => {
     if (playerWin()) {
       console.log("O jogador venceu");
-      alert("O jogador venceu");
+      showAlert("O jogador venceu");
     }
     if (gameOver()) {
       console.log("O jogador perdeu");
-      alert("O jogador perdeu");
+      showAlert("O jogador perdeu");
     }
   });
 
